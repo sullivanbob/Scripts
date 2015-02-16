@@ -9,19 +9,27 @@
 #
 # Uses dropbox uploader from:
 # https://github.com/andreafabrizi/Dropbox-Uploader
-
+#
 #
 # PICTURE_DIR - where pictures automount to
 #
+#export PICTURE_DIR=~/Scripts
 export PICTURE_DIR=/music/USB/DCIM/100OLYMP
+#
+# PICTURE_EXT - picture file extension
+#
+#export PICTURE_EXT=png
+export PICTURE_EXT=JPG
 
-# Test if directory appears
+#
+# Test if directory exists
+#
 if [ -d "${PICTURE_DIR}" ]
 then
-  echo Picture directory exists ${PICTURE_DIR}
+    echo Picture directory exists ${PICTURE_DIR}
 
     # for all pictures in the directory
-    for pfile in ${PICTURE_DIR}/*.JPG; do
+    for pfile in ${PICTURE_DIR}/*.${PICTURE_EXT}; do
         # get file basics for use in upload
         echo file is ${pfile}
         BASE_PIC=`basename ${pfile}`
